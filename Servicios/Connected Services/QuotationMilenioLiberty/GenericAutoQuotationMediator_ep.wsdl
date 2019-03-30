@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:iaxis="http://libertytypes.com.iaxis.services" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://libertytypes.com.iaxis.services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <abstractWSDL>http://wsqa.libertycolombia.com.co:8443/soa-infra/services/GenericAuto/GenericAutoQuotation!1.0.0/QuotationCarGeneric.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="QuotationCarGenericPort_Fault_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+    <sp:SignedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+    <sp:EncryptedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="QuotationCarGenericPort_Input_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+      <sp:Header Name="" Namespace="http://www.w3.org/2005/08/addressing" />
+      <sp:Header Name="" Namespace="http://schemas.xmlsoap.org/ws/2004/08/addressing" />
+    </sp:SignedParts>
+    <sp:SignedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+      <sp:Header Name="fmw-context" Namespace="http://xmlns.oracle.com/fmw/context/1.0" />
+    </sp:EncryptedParts>
+    <sp:EncryptedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="QuotationCarGenericPort_Output_Policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+    <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:SignedParts>
+    <sp:SignedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+    <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <sp:Body />
+    </sp:EncryptedParts>
+    <sp:EncryptedElements xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+  </wsp:Policy>
+  <wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="wss10_x509_token_with_message_protection_service_policy_SHA2">
+    <sp:AsymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:InitiatorToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+              <wsp:Policy>
+                <sp:WssX509V3Token10 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:InitiatorToken>
+        <sp:RecipientToken>
+          <wsp:Policy>
+            <sp:X509Token sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/Always">
+              <wsp:Policy>
+                <sp:WssX509V3Token10 />
+              </wsp:Policy>
+            </sp:X509Token>
+          </wsp:Policy>
+        </sp:RecipientToken>
+        <sp:AlgorithmSuite>
+          <wsp:Policy>
+            <sp:Basic128 />
+          </wsp:Policy>
+        </sp:AlgorithmSuite>
+        <sp:Layout>
+          <wsp:Policy>
+            <sp:Lax />
+          </wsp:Policy>
+        </sp:Layout>
+        <sp:IncludeTimestamp />
+        <sp:OnlySignEntireHeadersAndBody />
+        <sp:ProtectTokens />
+      </wsp:Policy>
+    </sp:AsymmetricBinding>
+    <sp:Wss10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy />
+    </sp:Wss10>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema targetNamespace="http://libertytypes.com.iaxis.services">
+      <xs:complexType name="InfoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="aplicacionCliente" type="xs:string" />
+          <xs:element minOccurs="1" name="fecha" type="xs:dateTime" />
+          <xs:element minOccurs="1" name="ip" type="xs:string" />
+          <xs:element minOccurs="1" name="requestID" type="xs:string" />
+          <xs:element minOccurs="1" name="terminal" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="InfoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="estado" type="iaxis:Estado" />
+          <xs:element minOccurs="0" name="requestID" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Estado">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoEstado" type="xs:string" />
+          <xs:element minOccurs="0" name="codigoEstadoServidor" type="xs:string" />
+          <xs:element minOccurs="0" name="descripcionEstado" type="xs:string" />
+          <xs:element minOccurs="0" name="severidad" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="QuotationCarGenericRq">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="amparo" type="iaxis:Amparo" />
+          <xs:element minOccurs="1" maxOccurs="1" name="automovil" type="iaxis:Automovil" />
+          <xs:element minOccurs="0" name="conductor" type="iaxis:PersonaNatural" />
+          <xs:element minOccurs="1" name="datosGestion" type="iaxis:DatosGestion" />
+          <xs:element minOccurs="1" maxOccurs="1" name="infoRequest" type="iaxis:InfoRequest" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="preguntaPoliza" type="iaxis:PreguntaGeneral" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="preguntaRiesgo" type="iaxis:PreguntaGeneral" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="preguntaTablaRiesgo" type="iaxis:PreguntaTablaGeneral" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="preguntaTablaPoliza" type="iaxis:PreguntaTablaGeneral" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tomadorPersonaJuridica" type="iaxis:PersonaJuridica" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tomadorPersonaNatural" type="iaxis:PersonaNatural" />
+          <xs:element minOccurs="0" name="usuario" type="iaxis:Usuario" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ElementoCodificado">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="codigo" type="xs:string" />
+          <xs:element minOccurs="0" name="nombre" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Amparo">
+        <xs:complexContent mixed="false">
+          <xs:extension base="iaxis:ElementoCodificado">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="capital" type="xs:string" />
+              <xs:element minOccurs="0" name="obligatorio" type="xs:boolean" />
+              <xs:element minOccurs="0" name="primaTarifa" type="xs:string" />
+              <xs:element minOccurs="0" name="primaAnual" type="xs:string" />
+              <xs:element minOccurs="0" name="deducible" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="preguntaAmparo" type="iaxis:PreguntaGeneral" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="preguntaTablaAmparo" type="iaxis:PreguntaTablaGeneral" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Prima">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="descuento" type="xs:string" />
+          <xs:element minOccurs="0" name="gastosExpedicion" type="xs:string" />
+          <xs:element minOccurs="0" name="impuestos" type="xs:string" />
+          <xs:element minOccurs="0" name="primaAnual" type="xs:string" />
+          <xs:element minOccurs="0" name="primerRecibo" type="xs:string" />
+          <xs:element minOccurs="0" name="sobreprima" type="xs:string" />
+          <xs:element minOccurs="0" name="tarifa" type="xs:string" />
+          <xs:element minOccurs="0" name="total" type="xs:string" />
+          <xs:element minOccurs="0" name="vigencia" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Automovil">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="datos" type="iaxis:Datos_type0" />
+          <xs:element minOccurs="1" name="identificacion" type="iaxis:Identificacion_type0" />
+          <xs:element minOccurs="1" name="otrosDatos" type="iaxis:OtrosDatos_type0" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Datos_type0">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="codigoFasecolda" type="xs:string" />
+          <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+          <xs:element minOccurs="1" name="modeloAnyo" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Identificacion_type0">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="chasis" type="xs:string" />
+          <xs:element minOccurs="1" name="color" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="1" name="kilometraje" type="xs:long" />
+          <xs:element minOccurs="0" name="motor" type="xs:string" />
+          <xs:element minOccurs="1" name="placa" type="iaxis:Placa" />
+          <xs:element minOccurs="0" name="valor" type="xs:long" />
+          <xs:element minOccurs="0" name="valorNuevo" type="xs:long" />
+          <xs:element minOccurs="0" name="valorActual" type="xs:long" />
+          <xs:element minOccurs="0" name="valorNuevoActual" type="xs:long" />
+          <xs:element minOccurs="0" name="tipoCampero" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="tipoCarroceria" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="tipoPintura" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="tipoRemolque" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="1" name="transportaCombustible" type="xs:boolean" />
+          <xs:element minOccurs="0" name="vin" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Placa">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="placa" type="xs:string" />
+          <xs:element minOccurs="1" name="tipoPlaca" type="iaxis:ElementoCodificado" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="OtrosDatos_type0">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="accesorio" type="iaxis:Accesorio" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="dispositivoSeguridad" type="iaxis:DispositivoSeguridad" />
+          <xs:element minOccurs="1" name="nuevo" type="xs:boolean" />
+          <xs:element minOccurs="1" name="uso" type="iaxis:ElementoCodificado" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Accesorio">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="descripcion" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="marca" type="xs:string" />
+          <xs:element minOccurs="1" name="tipo" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="valor" type="xs:double" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DispositivoSeguridad">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fechaInicioContrato" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="numeroContrato" type="xs:string" />
+          <xs:element minOccurs="1" name="propietario" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="1" name="tipo" type="iaxis:ElementoCodificado" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Persona">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="direccion" type="iaxis:Direccion" />
+          <xs:element minOccurs="1" name="numeroDocumento" type="xs:string" />
+          <xs:element minOccurs="1" name="telefono" type="iaxis:Telefono" />
+          <xs:element minOccurs="1" name="tipoDocumento" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" maxOccurs="1" name="idpersonaest" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="idpersonareal" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Direccion">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="ciudad" type="xs:string" />
+          <xs:element minOccurs="1" name="departamento" type="xs:string" />
+          <xs:element minOccurs="1" name="direccion" type="xs:string" />
+          <xs:element minOccurs="1" name="pais" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Telefono">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="numero" type="xs:string" />
+          <xs:element minOccurs="0" name="prefijo" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PersonaNatural">
+        <xs:complexContent mixed="false">
+          <xs:extension base="iaxis:Persona">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="fechaNacimiento" type="xs:dateTime" />
+              <xs:element minOccurs="1" name="genero" type="iaxis:ElementoCodificado" />
+              <xs:element minOccurs="0" name="ocupacion" type="iaxis:ElementoCodificado" />
+              <xs:element minOccurs="1" name="primerApellido" type="xs:string" />
+              <xs:element minOccurs="1" name="primerNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="segundoApellido" type="xs:string" />
+              <xs:element minOccurs="0" name="segundoNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DatosGestion">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="agente" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="1" name="duracion" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="fechaEfecto" type="xs:dateTime" />
+          <xs:element minOccurs="1" name="formaPago" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="1" name="producto" type="iaxis:ElementoCodificado" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PreguntaGeneral">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="pregunta" type="iaxis:Pregunta" />
+          <xs:element minOccurs="1" name="respuesta" type="iaxis:Respuesta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PreguntaTablaGeneral">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="pregunta" type="iaxis:Pregunta" />
+          <xs:element minOccurs="1" name="numeroFila" type="xs:int" />
+          <xs:element minOccurs="1" name="numeroColumna" type="xs:int" />
+          <xs:element minOccurs="1" name="respuesta" type="iaxis:Respuesta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="Pregunta">
+        <xs:complexContent mixed="false">
+          <xs:extension base="iaxis:ElementoCodificado">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Respuesta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigo" type="xs:string" />
+          <xs:element minOccurs="0" name="nombre" type="xs:string" />
+          <xs:element minOccurs="0" name="valor" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PersonaJuridica">
+        <xs:complexContent mixed="false">
+          <xs:extension base="iaxis:Persona">
+            <xs:sequence>
+              <xs:element minOccurs="1" name="fechaConstitucion" type="xs:dateTime" />
+              <xs:element minOccurs="1" name="razonSocial" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Usuario">
+        <xs:complexContent mixed="false">
+          <xs:extension base="iaxis:ElementoCodificado">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QuotationCarGenericRs">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="infoResponse" type="iaxis:InfoResponse" />
+          <xs:element minOccurs="0" name="simulacion" type="iaxis:ElementoCodificado" />
+          <xs:element minOccurs="0" name="datosGestion" type="iaxis:DatosGestion" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="amparo" type="iaxis:Amparo" />
+          <xs:element minOccurs="0" name="datosEconomicos" type="iaxis:Prima" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PSU" type="iaxis:PSU" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="PSU">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="amparo" type="xs:string" />
+          <xs:element minOccurs="1" name="critico" type="xs:boolean" />
+          <xs:element minOccurs="1" name="descripcion" type="xs:string" />
+          <xs:element minOccurs="1" name="estado" type="xs:string" />
+          <xs:element minOccurs="1" name="fecha" type="xs:dateTime" />
+          <xs:element minOccurs="1" name="nivel" type="xs:int" />
+          <xs:element minOccurs="0" name="riesgo" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="quotationCarGenericRq" type="iaxis:QuotationCarGenericRq" />
+      <xs:element name="quotationCarGenericRs" type="iaxis:QuotationCarGenericRs" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="quotationCarGenericRq">
+    <wsdl:part name="parameters" element="iaxis:quotationCarGenericRq" />
+  </wsdl:message>
+  <wsdl:message name="quotationCarGenericRs">
+    <wsdl:part name="parameters" element="iaxis:quotationCarGenericRs" />
+  </wsdl:message>
+  <wsdl:portType name="QuotationCarGenericPortType">
+    <wsdl:operation name="quotationCarGeneric">
+      <wsdl:input message="iaxis:quotationCarGenericRq" />
+      <wsdl:output message="iaxis:quotationCarGenericRs" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="quotationCarGenericSOAP" type="iaxis:QuotationCarGenericPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#wss10_x509_token_with_message_protection_service_policy_SHA2" wsdl:required="false" />
+    <wsdl:operation name="quotationCarGeneric">
+      <soap:operation soapAction="urn:quotationCarGeneric" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#QuotationCarGenericPort_Input_Policy" wsdl:required="false" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <wsp:PolicyReference xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" URI="#QuotationCarGenericPort_Output_Policy" wsdl:required="false" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GenericAutoQuotationMediator_ep">
+    <wsdl:port name="QuotationCarGenericPort" binding="iaxis:quotationCarGenericSOAP">
+      <soap:address location="http://wsqa.libertycolombia.com.co:8443/soa-infra/services/GenericAuto/GenericAutoQuotation/GenericAutoQuotationMediator_ep" />
+      <wsa:EndpointReference xmlns:wsa="http://www.w3.org/2005/08/addressing">
+        <wsa:Address xmlns:wsa="http://www.w3.org/2005/08/addressing">http://wsqa.libertycolombia.com.co:8443/soa-infra/services/GenericAuto/GenericAutoQuotation/GenericAutoQuotationMediator_ep</wsa:Address>
+        <wsid:Identity xmlns:wsid="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <dsig:KeyInfo xmlns:dsig="http://www.w3.org/2000/09/xmldsig#">
+            <dsig:X509Data>
+              <dsig:X509Certificate>MIICyDCCAbCgAwIBAgIEWdfcozANBgkqhkiG9w0BAQsFADAmMQswCQYDVQQGEwJDTzEXMBUGA1UEAxMOTElCRVJUWVFBLVNIQTIwHhcNMTcxMDA2MTk0MjI3WhcNMjcxMDA0MTk0MjI3WjAmMQswCQYDVQQGEwJDTzEXMBUGA1UEAxMOTElCRVJUWVFBLVNIQTIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCvjCa0Xgp+zXMkHvSVnnOlDF+uZf9PuNZK+yz4dypwSws+uJxTTXFqRmnlsqFA6n0C8Qtu0OMHoeFN6P5JXeQYNmKVTtPyOWkHGT5zLoTUi9WxQpamqU6W6sw5Jee27RP+DqUPCTv097w/GChf5Hz5Vj1+bBrkT7uqnPEr8j/1JfGFR1tHPKiLiwoETpIzKOLWy+h6s2/s6BKKKa2IaVPvsKLUleANppIqHXCB3XUDMeeGZqReXdj1IQCO4aFZq4NAMVvCTgPmo0CZquv1RRSSvEbuO+t6xroRzwp7hfMMVetOlsc93HeK7WeeLSX35R50ff5si2e1gHGtWE8YWTS/AgMBAAEwDQYJKoZIhvcNAQELBQADggEBAItaRKtLmPVmJFf9nVhzokp4DPPWJOEZMav9pQm+3M6YIa4Q9Vt10pO1V7lpWIbsUCDTkC+2Z7T6GpY0mRhtwgJPQ5089DgN7tksa2qkX8iIeVMLZ+g0u7y8gk11pmi1og3IznoTU5usig5umPbiASEezmXBwp35R8XngH4auuEQpzFTpPtcevYbY9w0juw7M1PW04cj06VJERM322FkOIb4g1RTjQgN+u9+IZSTzrApNoswdEY1ZePQkEvKyW59Edp/PqLyz+Uub0j7vxnx6MTLtSqW27yCX35eWokkjPx7Mm4xjuhJR8WfSinfMqYbOQrFbiXzyjpVcQrLnMoZxjY=</dsig:X509Certificate>
+              <dsig:X509IssuerSerial>
+                <dsig:X509IssuerName>CN=LIBERTYQA-SHA2, C=CO</dsig:X509IssuerName>
+                <dsig:X509SerialNumber>1507318947</dsig:X509SerialNumber>
+              </dsig:X509IssuerSerial>
+              <dsig:X509SubjectName>CN=LIBERTYQA-SHA2, C=CO</dsig:X509SubjectName>
+            </dsig:X509Data>
+          </dsig:KeyInfo>
+        </wsid:Identity>
+      </wsa:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
